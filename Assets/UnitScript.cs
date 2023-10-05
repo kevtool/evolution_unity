@@ -65,8 +65,8 @@ public class UnitScript : MonoBehaviour
             direction += direction_accel;
         } else if (hasRunStopped == false) {
             hasRunStopped = true;
-            manager.Stop();
-            Offspring.addOffspring(speed, 1f, food_eaten);
+            MapTracker.Stop();
+            MapTracker.addOffspring(speed, 1f, food_eaten);
         }
 
         directionAdjust();

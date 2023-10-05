@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2921464243764506620}
   - component: {fileID: 7700632459678683976}
   - component: {fileID: 5874169695683248820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,3 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1970233400b394e96a8729c432220a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  manager: {fileID: 0}

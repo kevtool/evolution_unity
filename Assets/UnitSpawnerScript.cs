@@ -12,12 +12,11 @@ public class UnitSpawnerScript : MonoBehaviour
     void Start()
     {
         int units;
-        if (Offspring.getRound() == 0){
+        if (MapTracker.getRound() == 0){
             units = Constants.numberOfUnits;
         } else {
-            units = Offspring.getCurrUnits();
+            units = MapTracker.getCurrUnits();
         }
-        Debug.Log(units);
 
         float totalSpeed = 0f;
 
@@ -25,10 +24,10 @@ public class UnitSpawnerScript : MonoBehaviour
             Vector3 starting = new Vector3(Constants.quadsize + 1, 0, Constants.quadsize + 1);
             GameObject currUnit = Instantiate(unit, starting, transform.rotation);
             float thisSpeed;
-            if (Offspring.getRound() == 0){
+            if (MapTracker.getRound() == 0){
                 thisSpeed = Constants.init_speed;
             } else {
-                thisSpeed = Offspring.speeds[i] + getSpeedChange();
+                thisSpeed = MapTracker.speeds[i] + getSpeedChange();
             }
             currUnit.GetComponent<UnitScript>().setAttributes(thisSpeed);
             totalSpeed += thisSpeed;
@@ -38,7 +37,7 @@ public class UnitSpawnerScript : MonoBehaviour
         manager.updateAvgSpeed(totalSpeed / (float)units);
 
 
-        Offspring.startOfRound();
+        MapTracker.startSimulation();
     }
 
     private float getSpeedChange(){

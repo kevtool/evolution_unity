@@ -15,4 +15,10 @@ public class FoodScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider collider){
+        if (collider.gameObject.layer == 8){
+            MapTracker.eatFood();
+        }
+    }
 }
