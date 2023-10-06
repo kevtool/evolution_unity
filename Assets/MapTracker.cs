@@ -10,6 +10,7 @@ public static class MapTracker {
     static int currRound;
     public static List<float> speeds = new List<float>();
     public static List<float> sizes = new List<float>();
+    public static List<int> foodTracker = new List<int>();
     static int stoppedUnits = 0;
     static int foodEaten = 0;
 
@@ -32,11 +33,9 @@ public static class MapTracker {
     public static int getRound(){
         return currRound;
     }
-
     public static int getCurrUnits(){
         return currNumberOfUnits;
     }
-
     public static int getNextUnits(){
         return nextNumberOfUnits;
     }
@@ -49,6 +48,13 @@ public static class MapTracker {
 
     public static void eatFood(){
         foodEaten += 1;
+    }
+
+    public static void addFood(int id){
+        foodTracker.Add(id);
+    }
+    public static bool removeFood(int id){
+        return foodTracker.Remove(id);
     }
 
     // Switches to a new Round scene.

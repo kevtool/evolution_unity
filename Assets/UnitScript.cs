@@ -89,24 +89,23 @@ public class UnitScript : MonoBehaviour
         }
 
         if (transform.position.x > Constants.quadsize && 0 <= direction && direction <= 90){
-            direction += 180f;
+            direction = 180f - direction;
         } else if (transform.position.x > Constants.quadsize && 270 <= direction && direction <= 360){
-            direction -= 180f;
-        }
-
-        if (transform.position.x < -Constants.quadsize && 90 <= direction && direction <= 270){
-            direction += 180f;
-            if (direction >= 360){
-                direction -= 360f;
-            }
+            direction = 540f - direction;
+        } else if (transform.position.x < -Constants.quadsize && 90 <= direction && direction <= 180){
+            direction = 180f - direction;
+        } else if (transform.position.x < -Constants.quadsize && 180 <= direction && direction <= 270){
+            direction = 540f - direction;
         }
     }
 
     private void OnTriggerEnter(Collider collider){
         if (collider.gameObject.layer == 7){
+            if (collider.gameObject.GetComponent<FoodScript>().removeFood() == true){
+                food_eaten += 1;
+                manager.updateNextUnits();
+            }
             Destroy(collider.gameObject);
-            food_eaten += 1;
-            manager.updateNextUnits();
         }
     }
 }

@@ -10,3 +10,7 @@ public static class Constants {
     public const float init_speed = 1f;
     public const float timeScale = 7f;
 }
+
+public static class Variables {
+    public static int speedup = 1;
+}

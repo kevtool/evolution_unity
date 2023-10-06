@@ -13,7 +13,9 @@ public class FoodSpawnerScript : MonoBehaviour
             int xpos = Random.Range(-Constants.quadsize+5, Constants.quadsize-4);
             int zpos = Random.Range(-Constants.quadsize+5, Constants.quadsize-4);
             Vector3 starting = new Vector3(xpos, 0, zpos);
-            Instantiate(food, starting, transform.rotation);
+            GameObject currFood = Instantiate(food, starting, transform.rotation);
+            currFood.GetComponent<FoodScript>().setID(i);
+            MapTracker.addFood(i);
         }
     }
 
